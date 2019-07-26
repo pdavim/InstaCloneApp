@@ -1,0 +1,30 @@
+{
+    "todo-tree.defaultHighlight": {
+        "icon": "alert",
+        "type": "text",
+        "foreground": "red",
+        //"background": "white",
+        "opacity": 50,
+        "iconColour": "white"
+    },
+    "todo-tree.customHighlight": {
+        "TODO": {
+            "icon": "check",
+            "type": "tag",
+            "iconColour": "green",
+            "foreground": "green",
+        },
+        "FIXME": {
+            "icon": "bug",
+            "type": "tag",
+            "iconColour": "red",
+            "foreground": "red",
+        },
+        "STYLEME": {
+            "icon": "beaker",
+            "type": "tag",
+            "iconColour": "blue",
+            "foreground": "blue",
+        }
+    }
+}

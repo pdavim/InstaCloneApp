@@ -54,9 +54,12 @@ class HomeTab extends React.Component {
             paddingEnd:5
           }}
           >
+          
+
             <Thumbnail 
             style={{marginHorizontal:5, borderColor:'pink', borderWidth:2}}
             source={require('../../assets/StoriesHeaderThumbnails/1.jpg')} />
+          
               <Thumbnail 
             style={{marginHorizontal:5, borderColor:'pink', borderWidth:2}}
             source={require('../../assets/StoriesHeaderThumbnails/2.jpg')} />
@@ -79,8 +82,7 @@ class HomeTab extends React.Component {
          </View>
        </View>
        <CardComponent imageSource="1" likes="101" />
-       <CardComponent imageSource="2" likes="101" />
-       <CardComponent imageSource="3" likes="101" />
+      
      </Content>
    </Container>
     )

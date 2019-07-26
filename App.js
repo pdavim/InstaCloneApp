@@ -3,11 +3,26 @@ import { StyleSheet, Text, View } from 'react-native';
 import { StackNavigator,createStackNavigator, createAppContainer } from 'react-navigation'
 
 import MainScreen from './Components/MainScreen'
+import PreMainScreen from './Components/PreMainScreen';
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = { 
+logged:false
+     };
+
+    
+  }
+ 
+
+
   render() {
     return (
+    
       <AppStackNavigator float/>
+   
     );
   }
 
@@ -16,7 +31,7 @@ class App extends React.Component {
 const AppStackNavigator = createStackNavigator({
 
   Main: {
-    screen: MainScreen
+    screen: PreMainScreen
   }
 })
 

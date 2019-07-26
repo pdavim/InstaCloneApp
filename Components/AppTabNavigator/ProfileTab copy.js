@@ -2,10 +2,7 @@ import React from 'react';
 import Lightbox from 'react-native-lightbox';
 
 
-import { StyleSheet, Text, View, Image, Dimensions, TouchableOpacity,TouchableHighlight,FlatList,Platform,Animated,
-  PanResponder,
-  StatusBar,Modal
-   } from 'react-native';
+import { StyleSheet, Text, View, Image, Dimensions, TouchableOpacity,TouchableHighlight,FlatList,Platform } from 'react-native';
 //import {Constants} from 'expo'
 
 import {Icon, Container, Content, Header, Left, Body, Right, Button} from 'native-base'
@@ -109,17 +106,10 @@ const nature = [
 },
 ]
 
-
-
 class ProfileTab extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      imageClicked:[],
-      modalSettings:false,
-      modalVisible: false,
-      selected: undefined,
-      visible: new Animated.Value(0),
       activeIndex:0,
       isImageViewVisible: false,
       activeTab: 0,
@@ -131,13 +121,10 @@ class ProfileTab extends React.Component {
           return acc;
       }, {}),
     };
-    
     this.renderFooter = this.renderFooter.bind(this);
   }
- 
-  toggleModal(visible) {
-    this.setState({ modalVisible: visible });
- }
+
+
   static navigationOptions = {
    
     tabBarIcon: ({tintColor}) => (
@@ -145,12 +132,6 @@ class ProfileTab extends React.Component {
      )
   }
   
-  imagePressed = (image,index) => {
-    console.log("Index ", index, " Clicked")
-    console.log("_________________________")
-    console.log("-------------------------")
-    console.log("Image ", image, " Clicked")
-  }
 
   segmentClicked = (index)=>{
     this.setState({
@@ -158,67 +139,21 @@ class ProfileTab extends React.Component {
     })
   }
 
-  setModalVisible(visible, image) {
-    this.setState({modalVisible: visible, imageClicked: image});
-    console.log("image clicked anc stored", image)
-  }
-
-  openSettings (){
-  //this.setState({modalSettings: !visible})
-  }
-
-  signUserOut=()=>{
-    f.auth.signOut()
-    .then(()=>{
-      console.log('LoogedOut')
-    }).catch((error)=>{
-      console.log(error)
-    })
-  }
-
   renderSectionOne=()=>{
- 
     return images.map((image,index)=>{
       return (
         <View  key={index} style={styles.containerSection}>
-       <Modal 
-           animationType="slide"
-          transparent={false}
-          visible={this.state.modalVisible}
-       >
-         <View style={{alignContent:"center", flex:1}}>
-         <Image source={image} style={{width:"100%"}}/>
-           <TouchableHighlight
-                onPress={() => {
-                  this.setModalVisible(!this.state.modalVisible);
-                  this.setState({
-                    imageClicked:null
-                  });
-                  console.log("image hided")
-                }}>
-                
-                <Icon name="ios-close" style={{paddingLeft:10}} />
-              </TouchableHighlight>
-         </View>
-       </Modal>
+       
 
-       <View  style={[{width:(width)/3},{ height:(width/3)},{marginBottom: 2},
-        index % 3 !=0?{paddingLeft:2}:{paddingLeft:0} 
+    <View  style={[{width:(width)/3},{ height:(width/3)},{marginBottom: 2},
+        index % 3 !=0?{paddingLeft:2}:{paddingLeft:0}
         ]}>
+     
 
-          <TouchableOpacity onPress={() => {
-            this.setModalVisible(true);
-            this.setState({
-              imageClicked:image
-            })
-  
-          }} activeOpacity = { .5 } style={{flex:1, width:undefined, height:undefined}}>
-            <Image   style={{flex:1, width:undefined, height:undefined}}
-            source={image} />
-            </TouchableOpacity>
+            <Image  style={{flex:1, width:undefined, height:undefined}} source={image} />
+     
         
         </View>
-      
         </View>
         
       )
@@ -296,20 +231,7 @@ class ProfileTab extends React.Component {
     );
 }
 
-
-
   render() {
-    const modalStyle = {
-      opacity: this.state.visible,
-      transform: [
-        {
-          translateY: this.state.visible.interpolate({
-            inputRange: [0, 1],
-            outputRange: [100, 0],
-          }),
-        },
-      ],
-    };
    // const {isImageViewVisible, activeTab, imageIndex} = this.state;
      //   const images = tabs[activeTab].images || [];
        
@@ -351,12 +273,8 @@ class ProfileTab extends React.Component {
               style={{flex:3, marginLeft:10, justifyContent:'center', height:30}} >
                 <Text>Edit Profile</Text>
               </Button>
-             <View>
-
-         
-             </View> 
-              <Button onPress={()=>this.openSettings(true)} bordered dark style={{flex:1, marginRight:10, justifyContent:'center', height:30, marginLeft:5,}}>
-                <Icon name='settings' style={{marginTop: -5,}} ></Icon>
+              <Button bordered dark style={{flex:1, marginRight:10, justifyContent:'center', height:30, marginLeft:5,}}>
+                <Icon name='settings' style={{marginTop: -5,}}></Icon>
               </Button>
             </View>
 
@@ -492,54 +410,5 @@ const styles = StyleSheet.create({
     width:WINDOW_WIDTH/3,
     //height:WINDOW_WIDTH/3
 
-  },
-  main: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  thumbnail: {
-    width: 100,
-    height: 100,
-  },
-  modal: {
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  modalContainer: {
-    width: "90%",
-    maxHeight: "60%",
-  },
-  header: {
-    backgroundColor: "#FFF",
-    borderTopLeftRadius: 4,
-    borderTopRightRadius: 4,
-    overflow: "hidden",
-    padding: 8,
-  },
-  footer: {
-    backgroundColor: "#FFF",
-    borderBottomLeftRadius: 4,
-    borderBottomRightRadius: 4,
-    overflow: "hidden",
-    padding: 8,
-  },
-  footerContent: {
-    justifyContent: "space-around",
-    flexDirection: "row",
-  },
-  image: {
-    width: "100%",
-    height: "100%",
-  },
-  text: {
-    flex: 1,
-    fontSize: 18,
-    textAlign: "center",
-  },
-  bold: {
-    fontWeight: "bold",
-  },
-
+  }
 })
-
