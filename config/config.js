@@ -3,13 +3,13 @@ import firebase from 'firebase'
 
 //API details
 const firebaseConfig = {
-    apiKey: "AIzaSyCM8s8LG1maY7lZC8sDPft5n7gOaTpd5P8",
-    authDomain: "productionapp-96303.firebaseapp.com",
-    databaseURL: "https://productionapp-96303.firebaseio.com",
-    projectId: "productionapp-96303",
-    storageBucket: "productionapp-96303.appspot.com",
-    messagingSenderId: "488585576112",
-    appId: "1:488585576112:web:2e689a640054138e"
+    apiKey: "",
+    authDomain: "",
+    databaseURL: "",
+    projectId: "",
+    storageBucket: "",
+    messagingSenderId: "",
+    appId: ""
   };
 
 firebase.initializeApp(firebaseConfig)
